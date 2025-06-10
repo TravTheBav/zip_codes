@@ -21,6 +21,7 @@ function Locations() {
     return (
         <>
         <h1>Locations</h1>
+        <button onClick={() => {redirect("/create-location")}}>Add Location</button>
         <LocationsTable locations={locations}/>
         </>
     )
