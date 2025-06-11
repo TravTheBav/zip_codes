@@ -1,21 +1,25 @@
 import LocationRow from "./LocationRow"
 
-function LocationsTable({ locations }) {
+function LocationsTable({ locations, onEdit }) {
     return (
         <>
         <table>
             <thead>
-                <th>LocationID</th>
-                <th>Zip</th>
-                <th>City</th>
-                <th>State</th>
-                <th>County</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
+                <tr>
+                    <th>LocationID</th>
+                    <th>Zip</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>County</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
             </thead>
             <tbody>
                 {locations.map((location, i) => {
-                    return <LocationRow location={location} key={i} />
+                    return <LocationRow location={location} onEdit={onEdit} key={i} />
                 })}
             </tbody>
         </table>

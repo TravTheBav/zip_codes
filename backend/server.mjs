@@ -58,7 +58,8 @@ app.put("/locations", (req, res) => {
         State = '${req.body.state}',
         County = '${req.body.county}',
         Latitude = ${req.body.latitude},
-        Longitude = ${req.body.longitude};`
+        Longitude = ${req.body.longitude}
+        WHERE LocationID = ${req.body.locationID};`
 
     db.query(query, (error) => {
         if (error) {

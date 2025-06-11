@@ -1,4 +1,6 @@
-function LocationRow({ location }) {
+import { LiaEdit } from "react-icons/lia"
+
+function LocationRow({ location, onEdit }) {
     return (
         <tr>
             <td>{location.LocationID}</td>
@@ -8,6 +10,9 @@ function LocationRow({ location }) {
             <td>{location.County}</td>
             <td>{location.Latitude}</td>
             <td>{location.Longitude}</td>
+            <td>
+                <i><LiaEdit onClick={() => {onEdit(location)}}/></i>
+            </td>
         </tr>
     )
 }
