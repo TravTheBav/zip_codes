@@ -50,18 +50,30 @@ function CreateLocation() {
         <>
         <h2>Add a Location</h2>
         <form onSubmit={createLocation}>
-            <label htmlFor="zip">Zip:</label>
-            <input type="number" id="zip" value={zip} onChange={e => setZip(e.target.value)}/>
-            <label htmlFor="city">City:</label>
-            <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)}/>
-            <label htmlFor="state">State:</label>
-            <input type="text" id="state" value={state} onChange={e => setState(e.target.value)}/>
-            <label htmlFor="county">County:</label>
-            <input type="text" id="county" value={county} onChange={e => setCounty(e.target.value)}/>
-            <label htmlFor="latitude">Latitude:</label>
-            <input type="number" id="latitude" value={latitude} onChange={e => setLatitude(e.target.value)}/>
-            <label htmlFor="longitude">Longitude:</label>
-            <input type="number" id="longitude" value={longitude} onChange={e => setLongitude(e.target.value)}/>
+            <div>
+                <label htmlFor="zip">Zip:</label>
+                <input type="number" id="zip" value={zip} onChange={e => setZip(e.target.value)}/>
+            </div>
+            <div>
+                <label htmlFor="city">City:</label>
+                <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)}/>
+            </div>
+            <div>
+                <label htmlFor="state">State:</label>
+                <input type="text" id="state" value={state} onChange={e => setState(e.target.value)}/>
+            </div>
+            <div>
+                <label htmlFor="county">County:</label>
+                <input type="text" id="county" value={county} onChange={e => setCounty(e.target.value)}/>
+            </div>
+            <div>
+                <label htmlFor="latitude">Latitude:</label>
+                <input type="number" id="latitude" value={latitude} onChange={e => setLatitude(e.target.value)}/>
+            </div>
+            <div>
+                <label htmlFor="longitude">Longitude:</label>
+                <input type="number" id="longitude" value={longitude} onChange={e => setLongitude(e.target.value)}/>
+            </div>
             <button type="submit">Create</button>
         </form>
         </>
