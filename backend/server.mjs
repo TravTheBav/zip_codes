@@ -32,9 +32,9 @@ app.post("/locations", (req, res) => {
     let query = `INSERT INTO Locations (Zip, City, State, County, Latitude, Longitude)
         VALUES (
         ${req.body.zip},
-        ${req.body.city},
-        ${req.body.state},
-        ${req.body.county},
+        "${req.body.city}",
+        "${req.body.state}",
+        "${req.body.county}",
         ${req.body.latitude},
         ${req.body.longitude}
         );`
@@ -58,7 +58,8 @@ app.put("/locations", (req, res) => {
         State = '${req.body.state}',
         County = '${req.body.county}',
         Latitude = ${req.body.latitude},
-        Longitude = ${req.body.longitude};`
+        Longitude = ${req.body.longitude}
+        WHERE LocationID = ${req.body.locationID};`
 
     db.query(query, (error) => {
         if (error) {

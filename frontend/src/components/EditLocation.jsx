@@ -1,0 +1,73 @@
+import { useState } from "react"
+import { useNavigate } from "react-router"
+
+function EditLocation({ location }) {
+    const redirect = useNavigate()
+
+    const [locationID, setLocationID] = useState(location.LocationID)
+    const [zip, setZip] = useState(location.Zip)
+    const [city, setCity] = useState(location.City)
+    const [state, setState] = useState(location.State)
+    const [county, setCounty] = useState(location.County)
+    const [latitude, setLatitude] = useState(location.Latitude)
+    const [longitude, setLongitude] = useState(location.Longitude)
+
+    const editLocation = async (event) => {
+        // prevent the default form submission
+        event.preventDefault()
+
+        // data to pass to the backend server
+        const locationData = {
+            locationID: locationID,
+            zip: zip,
+            city: city,
+            state: state,
+            county: county,
+            latitude: latitude,
+            longitude: longitude
+        }
+
+        // send the locationData object to the put endpoint
+        try {
+            const response = await fetch("/locations", {
+                method: "put",
+                body: JSON.stringify(locationData),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            if (response.status === 200) {
+                alert("Location was updated.")
+                redirect("/")
+            } else {
+                alert(`Could not update the location: ${response.status} - ${response.statusText}.`)
+            }
+        } catch {
+            alert("Carvant server is currently down, try again later.")
+        }
+    }
+
+    return (
+        <>
+        <h1>Edit Location: id #{location.LocationID}</h1>
+        <form onSubmit={editLocation}>
+            <label htmlFor="zip">Zip:</label>
+            <input type="number" id="zip" value={zip} onChange={e => setZip(e.target.value)} />
+            <label htmlFor="city">City:</label>
+            <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)}/>
+            <label htmlFor="state">State:</label>
+            <input type="text" id="state" value={state} onChange={e => setState(e.target.value)}/>
+            <label htmlFor="county">County:</label>
+            <input type="text" id="county" value={county} onChange={e => setCounty(e.target.value)}/>
+            <label htmlFor="latitude">Latitude:</label>
+            <input type="number" id="latitude" value={latitude} onChange={e => setLatitude(e.target.value)}/>
+            <label htmlFor="longitude">Longitude:</label>
+            <input type="number" id="longitude" value={longitude} onChange={e => setLongitude(e.target.value)}/>
+            <button type="submit">Update</button>
+        </form>
+        </>
+    )
+}
+
+export default EditLocation
