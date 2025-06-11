@@ -50,7 +50,7 @@ function EditLocation({ location }) {
 
     return (
         <>
-        <h1>Edit Location: id #{location.LocationID}</h1>
+        <h2>Edit Location: id #{location.LocationID}</h2>
         <form onSubmit={editLocation}>
             <label htmlFor="zip">Zip:</label>
             <input type="number" id="zip" value={zip} onChange={e => setZip(e.target.value)} />

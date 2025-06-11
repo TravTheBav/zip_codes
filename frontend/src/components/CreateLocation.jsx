@@ -48,7 +48,7 @@ function CreateLocation() {
 
     return (
         <>
-        <h1>Add a Location</h1>
+        <h2>Add a Location</h2>
         <form onSubmit={createLocation}>
             <label htmlFor="zip">Zip:</label>
             <input type="number" id="zip" value={zip} onChange={e => setZip(e.target.value)}/>

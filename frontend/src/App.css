@@ -1,7 +1,28 @@
-#root {
+:root {
+  --mediumGrey: rgb(70, 70, 70);
+}
+
+body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+header {
+  background-color: var(--mediumGrey);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header h1 {
+  margin: 0px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
 }
 
 table {
@@ -17,6 +38,7 @@ button {
   background: white;
   color: black;
   margin: 1rem 1rem 1rem 0px;
+  max-width: fit-content;
 }
 
 form {
@@ -39,5 +61,11 @@ input[type="text"], input[type="number"] {
 i * {
   width: 100%;
   height: 1.6rem;
+  cursor: pointer;
+}
+
+i.siteLogo * {
+  width: 4rem;
+  height: 4rem;
   cursor: pointer;
 }

@@ -50,7 +50,7 @@ function Locations({setLocation}) {
 
     return (
         <>
-        <h1>Locations</h1>
+        <h2>All Locations</h2>
         <button onClick={() => {redirect("/create-location")}}>Add Location</button>
         <LocationsTable locations={locations} onEdit={onEditLocation} onDelete={onDeleteLocation}/>
         </>
