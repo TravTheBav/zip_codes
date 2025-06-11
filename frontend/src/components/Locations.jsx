@@ -20,6 +20,29 @@ function Locations({setLocation}) {
         redirect("/edit-location")
     }
 
+    // called whenever the delete icon for a location row is clicked
+    // deletes the location and updates the table to reflect the changes
+    const onDeleteLocation = async (location) => {
+        // let user know that this action cannot be undone
+        const confirmation = confirm(
+            "Are you sure you want to delete this location? This action cannot be undone."
+        )
+
+        if (confirmation) {
+            const _id = location.LocationID
+            const response = await fetch(`/locations/${_id}`, { method: "DELETE" })
+
+            if (response.status === 200) {
+                const getResponse = await fetch("/locations")
+                const locations = await getResponse.json()
+                alert("Location was successfully deleted.")
+                setLocations(locations)
+            } else {
+                console.error(`Could not delete the location, status code: ${response.status}`)
+            }
+        }
+    }
+
     // only gets called on page load
     useEffect(() => {
         loadLocations()
@@ -29,7 +52,7 @@ function Locations({setLocation}) {
         <>
         <h1>Locations</h1>
         <button onClick={() => {redirect("/create-location")}}>Add Location</button>
-        <LocationsTable locations={locations} onEdit={onEditLocation}/>
+        <LocationsTable locations={locations} onEdit={onEditLocation} onDelete={onDeleteLocation}/>
         </>
     )
 }

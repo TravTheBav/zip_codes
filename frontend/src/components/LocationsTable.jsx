@@ -1,6 +1,6 @@
 import LocationRow from "./LocationRow"
 
-function LocationsTable({ locations, onEdit }) {
+function LocationsTable({ locations, onEdit, onDelete }) {
     return (
         <>
         <table>
@@ -19,7 +19,7 @@ function LocationsTable({ locations, onEdit }) {
             </thead>
             <tbody>
                 {locations.map((location, i) => {
-                    return <LocationRow location={location} onEdit={onEdit} key={i} />
+                    return <LocationRow location={location} onEdit={onEdit} onDelete={onDelete} key={i} />
                 })}
             </tbody>
         </table>

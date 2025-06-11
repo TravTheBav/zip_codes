@@ -1,6 +1,7 @@
 import { LiaEdit } from "react-icons/lia"
+import { RiDeleteBin5Line } from "react-icons/ri";
 
-function LocationRow({ location, onEdit }) {
+function LocationRow({ location, onEdit, onDelete }) {
     return (
         <tr>
             <td>{location.LocationID}</td>
@@ -12,6 +13,9 @@ function LocationRow({ location, onEdit }) {
             <td>{location.Longitude}</td>
             <td>
                 <i><LiaEdit onClick={() => {onEdit(location)}}/></i>
+            </td>
+            <td>
+                <i><RiDeleteBin5Line onClick={() => {onDelete(location)}}/></i>
             </td>
         </tr>
     )
